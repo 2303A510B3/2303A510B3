@@ -1,0 +1,179 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMR6otu+o7e1ODIuJ91mxht",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/2303A510B3/2303A510B3/blob/main/Assignment%202%20BFS\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "XlDydpJmLj5N",
+        "outputId": "7b5af79a-6451-474e-b4e7-0a672de87764"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{'nbformat': 4,\n",
+              " 'nbformat_minor': 0,\n",
+              " 'metadata': {'colab': {'provenance': [],\n",
+              "   'authorship_tag': 'ABX9TyNboRevfQAO6ai8sRoFXRDi'},\n",
+              "  'kernelspec': {'name': 'python3', 'display_name': 'Python 3'},\n",
+              "  'language_info': {'name': 'python'}},\n",
+              " 'cells': [{'cell_type': 'markdown',\n",
+              "   'metadata': {'id': 'view-in-github', 'colab_type': 'text'},\n",
+              "   'source': ['<a href=\"https://colab.research.google.com/github/2303a51840/2303a51840/blob/main/Ass-2%20BFS\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>']},\n",
+              "  {'cell_type': 'code',\n",
+              "   'execution_count': 1,\n",
+              "   'metadata': {'colab': {'base_uri': 'https://localhost:8080/'},\n",
+              "    'id': '8ZIiVIVCR4cO',\n",
+              "    'outputId': 'ba48cb5e-9759-410c-8a60-d0f02a34578b'},\n",
+              "   'outputs': [{'output_type': 'stream',\n",
+              "     'name': 'stdout',\n",
+              "     'text': ['The adjacency List representing the graph is:\\n',\n",
+              "      '{0: [1, 3], 1: [0, 2, 3], 2: [4, 1, 5], 3: [4, 0, 1], 4: [2, 3, 5], 5: [4, 2]}\\n',\n",
+              "      'BFS traversal of graph with source 0 is:\\n',\n",
+              "      '0-->1-->3-->2-->4-->5-->']}],\n",
+              "   'source': ['#Implement Breadth First Search Algorithm using a Queue.\\n',\n",
+              "    '\\n',\n",
+              "    '\\n',\n",
+              "    'from queue import Queue\\n',\n",
+              "    '\\n',\n",
+              "    'graph = {0: [1, 3], 1: [0, 2, 3], 2: [4, 1, 5], 3: [4, 0, 1], 4: [2, 3, 5], 5: [4, 2],}\\n',\n",
+              "    'print(\"The adjacency List representing the graph is:\")\\n',\n",
+              "    'print(graph)\\n',\n",
+              "    '\\n',\n",
+              "    '\\n',\n",
+              "    'def bfs(graph, source):\\n',\n",
+              "    '    Q = Queue()\\n',\n",
+              "    '    visited_vertices = set()\\n',\n",
+              "    '    Q.put(source)\\n',\n",
+              "    '    visited_vertices.update({0})\\n',\n",
+              "    '    while not Q.empty():\\n',\n",
+              "    '        vertex = Q.get()\\n',\n",
+              "    '        print(vertex, end=\"-->\")\\n',\n",
+              "    '        for u in graph[vertex]:\\n',\n",
+              "    '            if u not in visited_vertices:\\n',\n",
+              "    '                Q.put(u)\\n',\n",
+              "    '                visited_vertices.update({u})\\n',\n",
+              "    '\\n',\n",
+              "    'print(\"BFS traversal of graph with source 0 is:\")\\n',\n",
+              "    'bfs(graph, 0)']}]}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ],
+      "source": [
+        "{\n",
+        "  \"nbformat\": 4,\n",
+        "  \"nbformat_minor\": 0,\n",
+        "  \"metadata\": {\n",
+        "    \"colab\": {\n",
+        "      \"provenance\": [],\n",
+        "      \"authorship_tag\": \"ABX9TyNboRevfQAO6ai8sRoFXRDi\",\n",
+        "\n",
+        "    },\n",
+        "    \"kernelspec\": {\n",
+        "      \"name\": \"python3\",\n",
+        "      \"display_name\": \"Python 3\"\n",
+        "    },\n",
+        "    \"language_info\": {\n",
+        "      \"name\": \"python\"\n",
+        "    }\n",
+        "  },\n",
+        "  \"cells\": [\n",
+        "    {\n",
+        "      \"cell_type\": \"markdown\",\n",
+        "      \"metadata\": {\n",
+        "        \"id\": \"view-in-github\",\n",
+        "        \"colab_type\": \"text\"\n",
+        "      },\n",
+        "      \"source\": [\n",
+        "        \"<a href=\\\"https://colab.research.google.com/github/2303a51840/2303a51840/blob/main/Ass-2%20BFS\\\" target=\\\"_parent\\\"><img src=\\\"https://colab.research.google.com/assets/colab-badge.svg\\\" alt=\\\"Open In Colab\\\"/></a>\"\n",
+        "      ]\n",
+        "    },\n",
+        "    {\n",
+        "      \"cell_type\": \"code\",\n",
+        "      \"execution_count\": 1,\n",
+        "      \"metadata\": {\n",
+        "        \"colab\": {\n",
+        "          \"base_uri\": \"https://localhost:8080/\"\n",
+        "        },\n",
+        "        \"id\": \"8ZIiVIVCR4cO\",\n",
+        "        \"outputId\": \"ba48cb5e-9759-410c-8a60-d0f02a34578b\"\n",
+        "      },\n",
+        "      \"outputs\": [\n",
+        "        {\n",
+        "          \"output_type\": \"stream\",\n",
+        "          \"name\": \"stdout\",\n",
+        "          \"text\": [\n",
+        "            \"The adjacency List representing the graph is:\\n\",\n",
+        "            \"{0: [1, 3], 1: [0, 2, 3], 2: [4, 1, 5], 3: [4, 0, 1], 4: [2, 3, 5], 5: [4, 2]}\\n\",\n",
+        "            \"BFS traversal of graph with source 0 is:\\n\",\n",
+        "            \"0-->1-->3-->2-->4-->5-->\"\n",
+        "          ]\n",
+        "        }\n",
+        "      ],\n",
+        "      \"source\": [\n",
+        "        \"#Implement Breadth First Search Algorithm using a Queue.\\n\",\n",
+        "        \"\\n\",\n",
+        "        \"\\n\",\n",
+        "        \"from queue import Queue\\n\",\n",
+        "        \"\\n\",\n",
+        "        \"graph = {0: [1, 3], 1: [0, 2, 3], 2: [4, 1, 5], 3: [4, 0, 1], 4: [2, 3, 5], 5: [4, 2],}\\n\",\n",
+        "        \"print(\\\"The adjacency List representing the graph is:\\\")\\n\",\n",
+        "        \"print(graph)\\n\",\n",
+        "        \"\\n\",\n",
+        "        \"\\n\",\n",
+        "        \"def bfs(graph, source):\\n\",\n",
+        "        \"    Q = Queue()\\n\",\n",
+        "        \"    visited_vertices = set()\\n\",\n",
+        "        \"    Q.put(source)\\n\",\n",
+        "        \"    visited_vertices.update({0})\\n\",\n",
+        "        \"    while not Q.empty():\\n\",\n",
+        "        \"        vertex = Q.get()\\n\",\n",
+        "        \"        print(vertex, end=\\\"-->\\\")\\n\",\n",
+        "        \"        for u in graph[vertex]:\\n\",\n",
+        "        \"            if u not in visited_vertices:\\n\",\n",
+        "        \"                Q.put(u)\\n\",\n",
+        "        \"                visited_vertices.update({u})\\n\",\n",
+        "        \"\\n\",\n",
+        "        \"print(\\\"BFS traversal of graph with source 0 is:\\\")\\n\",\n",
+        "        \"bfs(graph, 0)\"\n",
+        "      ]\n",
+        "    }\n",
+        "  ]\n",
+        "}"
+      ]
+    }
+  ]
+}
